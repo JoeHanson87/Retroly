@@ -3,19 +3,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2> Games </h2>
+<h2> Games List </h2>
 <div> </div>
 
 <table class=“table table-bordered table-hover”>
-    <tr>
-        <th> ID </th>
-        <th> Name </th>
-    </tr>
-    @foreach (var game in Model )
-    {
+    <thead>
         <tr>
-            <td>@game.Id</td>
-            <td>@game.Name</td>
-        </tr>
-    }
-    </table>
+            <th> ID </th>
+            <th> Name </th>
+         </tr>
+    </thead>
+    <tbody>
+       @foreach (var game in Model)
+        {
+            <tr>
+                <td>@game.Id</td>
+                <td>@game.Name</td>
+            </tr>
+        }
+        </tbody>
+</table>

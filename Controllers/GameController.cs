@@ -21,5 +21,16 @@ namespace Retroly.Controllers
         {
             return View(GamesList);
         }
+    
+        //GET: Game/Details
+        public ActionResult Details(int id)
+        {
+            return View(id);
+        }
+    
+    
     }
+
+
+
 }
