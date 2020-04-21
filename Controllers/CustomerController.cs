@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Retroly.Models;
+using Retroly.ViewModels;
 
 namespace Retroly.Controllers
 {
@@ -22,9 +23,20 @@ namespace Retroly.Controllers
         {
             _context.Dispose();
         }
- 
-        // GET: Customer
-        public ActionResult Index()
+
+        public ActionResult New()
+        {
+            var MembershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new NewCustomerViewModel()
+            {
+                MembershipTypes = MembershipTypes
+            };
+            return View(viewModel);
+        }
+
+
+            // GET: Customer
+            public ActionResult Index()
         {
             var customers = _context.Customers.Include(c => c.MembershipType).ToList();
 
