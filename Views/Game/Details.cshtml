@@ -1,0 +1,16 @@
+﻿@model Retroly.Models.Game
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> Game Details </h2>
+<div> </div>
+<div> </div>
+<h3> @Model.Name  </h3>
+
+<ul>
+    <li>Release Date: @Model.ReleaseDate.ToString("dd-MM-yyyy")</li>
+    <li>Date Added: @Model.DateAdded.ToString("dd-MM-yyyy")</li>
+    <li>Number of Copies: @Model.NumInStock</li>
+    <li>Genre: @Model.Genre.Name</li>
+</ul>

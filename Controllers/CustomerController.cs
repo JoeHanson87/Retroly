@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,17 +11,34 @@ namespace Retroly.Controllers
     public class CustomerController : Controller
     {
 
-        List<Customer> customerList = new List<Customer>
-        {
-            new Customer {Id = 1, Name = "Joe Bloggs"},
-            new Customer {Id = 2, Name = "John Smith"},
-            new Customer {Id = 3, Name = "Jane Doe"}
-        };
+        private ApplicationDbContext _context;
 
+        public CustomerController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+ 
         // GET: Customer
         public ActionResult Index()
         {
-            return View(customerList);
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
+
+            return View(customers);
+        }
+
+        //GET: Customer/Details
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return Content("Customer ID not found");
+            }
+            return View(_context.Customers.Include(c => c.MembershipType).SingleOrDefault(customer => customer.Id == id));
         }
     }
 }

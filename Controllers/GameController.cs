@@ -4,31 +4,39 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Retroly.Models;
+using System.Data.Entity;
 
 namespace Retroly.Controllers
 {
     public class GameController : Controller
     {
-        List<Game> GamesList = new List<Game>
+        private ApplicationDbContext _context;
+
+        public GameController()
         {
-            new Game {Id = 1, Name = "Sonic The Hedgehog" },
-            new Game {Id = 2, Name = "Cool Spot"},
-            new Game {Id = 3, Name = "Golden Axe"}
-        };
+            _context = new ApplicationDbContext();
+        }
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         // GET: Game
         public ActionResult Index()
         {
-            return View(GamesList);
+            var games = _context.Games.Include(c => c.Genre).ToList();
+            return View(games);
         }
     
         //GET: Game/Details
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View(id);
+            if (id == null)
+            {
+                return Content("Game ID not found");
+            }
+            return View(_context.Games.Include(c => c.Genre).FirstOrDefault(game => game.Id == id));
         }
-    
-    
     }
 
 

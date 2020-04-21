@@ -6,7 +6,7 @@
 <h2> Games List </h2>
 <div> </div>
 
-<table class=“table table-bordered table-hover”>
+<table class="table table-bordered table-hover">
     <thead>
         <tr>
             <th> ID </th>
@@ -16,10 +16,10 @@
     <tbody>
        @foreach (var game in Model)
         {
-            <tr>
-                <td>@game.Id</td>
-                <td>@game.Name</td>
-            </tr>
+        <tr>
+            <td>@game.Id</td>
+            <td>@Html.ActionLink(game.Name,"Details", "Game", new {id = game.Id }, null)</td>
+        </tr>
         }
         </tbody>
 </table>
