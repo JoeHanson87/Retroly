@@ -5,6 +5,10 @@
 
 <h2> Games List </h2>
 <div> </div>
+<div class="btn btn-primary">
+    @Html.ActionLink("Add Game", "New", "Game")
+</div>
+<h3> </h3>
 
 <table class="table table-bordered table-hover">
     <thead>
@@ -18,8 +22,8 @@
         {
         <tr>
             <td>@game.Id</td>
-            <td>@Html.ActionLink(game.Name,"Details", "Game", new {id = game.Id }, null)</td>
+            <td>@Html.ActionLink(game.Name,"Edit", "Game", new {id = game.Id }, null)</td>
         </tr>
         }
-        </tbody>
+    </tbody>
 </table>
