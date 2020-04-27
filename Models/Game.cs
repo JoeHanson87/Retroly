@@ -18,7 +18,7 @@ namespace Retroly.Models
         [Required]
         [Range(0,99)]
         public int NumInStock { get; set; }
+        public byte GenreId { get; set; }
         public Genre Genre { get; set; }
-        public int GenreId { get; set; }
     }
 }

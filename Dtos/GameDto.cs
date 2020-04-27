@@ -18,5 +18,6 @@ namespace Retroly.Dtos
         [Range(0, 99)]
         public int NumInStock { get; set; }
         public int GenreId { get; set; }
+        public GenreDto Genre { get; set; }
     }
 }

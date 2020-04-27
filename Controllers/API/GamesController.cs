@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 using Retroly.Models;
 using Retroly.Dtos;
 using AutoMapper;
@@ -21,7 +22,12 @@ namespace Retroly.Controllers.API
         //GET /api/games -- Get the list of all Games
         public IHttpActionResult GetGames()
         {
-            return Ok(_context.Games.ToList().Select(Mapper.Map<Game, GameDto>));
+            var gameDtos = _context.Games
+                .Include(g => g.Genre)
+                .ToList()
+                .Select(Mapper.Map<Game, GameDto>);
+
+            return Ok(gameDtos);
         }
 
         //GET /api/game/1 -- Get a single Game

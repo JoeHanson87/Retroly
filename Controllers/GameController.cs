@@ -68,8 +68,7 @@ namespace Retroly.Controllers
         // GET: Game
         public ActionResult Index()
         {
-            var games = _context.Games.Include(c => c.Genre).ToList();
-            return View(games);
+            return View();
         }
     
         //GET: Game/Details

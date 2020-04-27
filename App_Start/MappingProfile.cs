@@ -13,12 +13,13 @@ namespace Retroly.App_Start
         public MappingProfile()
         {
             Mapper.CreateMap<Customer, CustomerDto>();
-               // .ForMember(c=> c.Id, opt => opt.Ignore());
+            Mapper.CreateMap<Game, GameDto>();
+            Mapper.CreateMap<MembershipType, MemershipTypeDto>();
+            Mapper.CreateMap<Genre, GenreDto>();
+
             Mapper.CreateMap<CustomerDto, Customer>()
                 .ForMember(c => c.Id, opt => opt.Ignore());
 
-            Mapper.CreateMap<Game, GameDto>();
-              //  .ForMember(g => g.Id, opt => opt.Ignore());
             Mapper.CreateMap<GameDto, Game>()
                 .ForMember(g => g.Id, opt => opt.Ignore());
         }
