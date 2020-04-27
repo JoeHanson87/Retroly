@@ -21,7 +21,7 @@ namespace Retroly.Controllers
         {
             _context.Dispose();
         }
-
+        [Authorize(Roles = RoleName.CanManageGames)]
         public ActionResult New()
         {
             var genres = _context.Genres.ToList();
@@ -68,7 +68,10 @@ namespace Retroly.Controllers
         // GET: Game
         public ActionResult Index()
         {
-            return View();
+            if (User.IsInRole(RoleName.CanManageGames))
+                return View("List");
+            else
+                return View("ReadOnlyList");
         }
     
         //GET: Game/Details

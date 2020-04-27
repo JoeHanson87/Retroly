@@ -214,6 +214,14 @@
     <Compile Include="Migrations\202004271514321_PopulateGenres.Designer.cs">
       <DependentUpon>202004271514321_PopulateGenres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004271938406_SeedUsers.cs" />
+    <Compile Include="Migrations\202004271938406_SeedUsers.Designer.cs">
+      <DependentUpon>202004271938406_SeedUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004272010255_AddDrivingLicense.cs" />
+    <Compile Include="Migrations\202004272010255_AddDrivingLicense.Designer.cs">
+      <DependentUpon>202004272010255_AddDrivingLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -223,6 +231,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\GameFormViewModel.cs" />
@@ -460,12 +469,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Game\List.cshtml" />
     <Content Include="Views\Game\Details.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
     <Content Include="Views\Customer\CustomerForm.cshtml" />
     <Content Include="Views\Game\GameForm.cshtml" />
+    <Content Include="Views\Game\ReadOnlyList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -495,6 +505,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004271514321_PopulateGenres.resx">
       <DependentUpon>202004271514321_PopulateGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004271938406_SeedUsers.resx">
+      <DependentUpon>202004271938406_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004272010255_AddDrivingLicense.resx">
+      <DependentUpon>202004272010255_AddDrivingLicense.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
