@@ -20,10 +20,16 @@ namespace Retroly.Controllers.API
             _context = new ApplicationDbContext();
         }
         //GET /api/games -- Get the list of all Games
-        public IHttpActionResult GetGames()
+        public IHttpActionResult GetGames(string query = null)
         {
-            var gameDtos = _context.Games
-                .Include(g => g.Genre)
+            var gamesQuery = _context.Games
+                .Include(g => g.Genre);
+
+            if (!String.IsNullOrWhiteSpace(query))
+                gamesQuery = gamesQuery.Where(g => g.Name.Contains(query))
+                                       .Where(g => g.NumAvailable > 0);
+                
+            var gameDtos = gamesQuery
                 .ToList()
                 .Select(Mapper.Map<Game, GameDto>);
 
